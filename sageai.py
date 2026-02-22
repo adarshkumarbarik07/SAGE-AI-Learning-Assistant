@@ -9,8 +9,8 @@ import re
 # ────────────────────────────────────────────────
 # CONFIG – GROQ (BEST FREE-FOREVER)
 # ────────────────────────────────────────────────
-# Insert your API key here before running
-API_KEY = "YOUR_API_KEY"
+import os
+API_KEY = os.getenv("GROQ_API_KEY")
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "llama-3.1-8b-instant"  # Fast & free
 
@@ -330,4 +330,5 @@ Context:
                 st.session_state.messages.append(("assistant", answer))
             except Exception as e:
                 st.session_state.messages.append(("assistant", f"⚠️ Error: {str(e)}"))
+
         st.rerun()
